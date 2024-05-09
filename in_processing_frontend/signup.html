@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login | Newspaper</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./css/signup.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+    </style>
+</head>
+
+<body>
+    <nav class="">
+        <div class="title">Newspaper</div>
+    </nav>
+    <nav class="footer">
+        <div class="title">About Us</div>
+    </nav>
+
+
+    <div class="container containerlogin ">
+        <div class="row">
+            <div class="col-7">
+                <img src="https://picsum.photos/200?grayscale" alt="banner" class="banner">
+            </div>
+
+
+            <div class="col type d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-center">
+                    <div class="login text-black-50">Đăng nhập</div>
+                    <div class="mx-5 break"></div>
+                    <div class="signup">Đăng ký</div>
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <input type="text" name="firstname" id="firstname" placeholder="Họ đệm">
+                    <input type="text" name="lastname" id="lastname" placeholder="Tên">
+                    <input type="date" name="birthday" id="birthday" placeholder="dd-mm-yyyy" min="1950-01-01"
+                        max="2030-12-31">
+                </div>
+                <input type="email" name="username" id="username" placeholder="Email">
+                <div class="d-flex justify-content-between">
+                    <input type="text" name="adress" id="adress" placeholder="Địa chỉ">
+                    <select>
+                        <option selected>Giới tính</option>
+                        <option value="1">Nam</option>
+                        <option value="2">Nữ</option>
+                        <option value="3">Khác</option>
+                    </select>
+
+                </div>
+                <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                <input type="text" name="retype" id="retype" placeholder="Gõ lại mật khẩu">
+                <div class="d-flex justify-content-between">
+                    <div class="align-middle d-flex flex-column">
+                        <a class="forgot" href="">Chưa đã tài khoản ?</a>
+                        <a class="forgot" href="">Quên mật khẩu?</a>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <span type="button" name="login" id="login" class="btn" type="submit">
+                            Đăng Ký
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

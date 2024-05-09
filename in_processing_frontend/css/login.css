@@ -1,0 +1,112 @@
+.containerlogin {
+  font-family: 'Oswald';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  vertical-align: middle;
+  overflow-y: hidden;
+}
+
+
+.centered {
+  width: 100%;
+}
+
+img.banner {
+  background-color: #D9D9D9;
+  border-radius: 20px;
+  width: 100%;
+  height: 500px;
+
+  object-fit: cover;
+}
+
+.type {
+  width: 100%;
+}
+
+
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 70px;
+  text-indent: 34px;
+  color: #565656;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  background: #E8F0FE;
+
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input:focus {
+  border: 0.1px solid #111;
+}
+
+
+.forgot {
+  color: #00B8EE;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+
+}
+
+#login {
+  border: 0px;
+  padding: 5px 24px;
+  border-radius: 10px;
+  font-size: 23px;
+  background: #011E60;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  color: white;
+}
+
+#login:hover {
+  background-color: white;
+  color: #011E60;
+  border: 1px solid #011E60;
+}
+
+.break {
+  height: 100%;
+  width: 2px;
+  background-color: black;
+}
+
+.login,
+.signup {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  background-color: #333333;
+  letter-spacing: 0.5px;
+}
+
+.footer {
+  bottom: 0px;
+}
+
+.title {
+  font-family: 'Oswald';
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  color: black;
+  color: white;
+
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
