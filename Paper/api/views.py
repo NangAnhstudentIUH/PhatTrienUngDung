@@ -285,3 +285,25 @@ def article(request, id):
     news.url = open("./news/" + url, "r", encoding='utf-8-sig').read()
     tags = Tag.objects.filter(article=news).order_by('-istop')
     return render(request, 'news.html', {'news': news, 'tags': tags, 'catergories': categories})
+from django.views import View
+from django.shortcuts import render
+from .models import Article
+
+class SearchArticlesByCategoryView(View):
+    """
+    View class để tìm kiếm các bài báo theo danh mục.
+    """
+    def get(self, request):
+        # Lấy danh mục từ query parameters
+        category = request.GET.get('category', None)
+
+        # Kiểm tra xem danh mục đã được cung cấp chưa
+        if category:
+            # Tìm kiếm các bài báo có category là category được chỉ định
+            articles = Article.objects.filter(category=category)
+            
+            # Trả về trang kết quả tìm kiếm với danh sách bài báo
+            return render(request, 'home.html', {'articles': articles, 'category': category})
+        else:
+            # Trả về trang thông báo nếu không có danh mục được cung cấp
+            return render(request, 'home.html', {'error_message': 'Vui lòng cung cấp danh mục để tìm kiếm.'})

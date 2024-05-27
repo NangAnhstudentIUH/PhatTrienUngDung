@@ -143,3 +143,26 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name if not self.istop else f'**{self.name.upper()}'
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Article
+
+def search_articles_by_category(request):
+    """
+    View function để tìm kiếm các bài báo theo danh mục.
+    """
+    # Lấy danh mục từ query parameters
+    category = request.GET.get('category', None)
+
+    # Kiểm tra xem danh mục đã được cung cấp chưa
+    if category:
+        # Tìm kiếm các bài báo có category là category được chỉ định
+        articles = Article.objects.filter(category=category)
+        
+        # Trả về trang kết quả tìm kiếm với danh sách bài báo
+        return render(request, 'home.html', {'articles': articles, 'category': category})
+    else:
+        # Trả về trang thông báo nếu không có danh mục được cung cấp
+        return render(request, 'home.html', {'error_message': 'Vui lòng cung cấp danh mục để tìm kiếm.'})
+
+
