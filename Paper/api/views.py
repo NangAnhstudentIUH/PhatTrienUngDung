@@ -224,7 +224,7 @@ def homepage(request):
     b.title = b.title.upper()
     c.title = c.title.upper()
     # choice 5 random news
-    left5 = [choice(news) for _ in range(8)]
+    left5 = [choice(news) for _ in range(10)]
 
     # get topics have most news
     tmp = {}
@@ -232,7 +232,7 @@ def homepage(request):
         tmp[n.category] = tmp.get(n.category, 0) + 1
     top1 = max(tmp, key=tmp.get)
     
-    topic1 = [n for n in news if n.category == top1][:8]
+    topic1 = [n for n in news if n.category == top1][:9]
     # pop tmp top1
     tmp.pop(top1)
     top2 = max(tmp, key=tmp.get)
@@ -283,27 +283,39 @@ def article(request, id):
     # get 7 categories
     categories = list(set([n.category for n in Article.objects.all()]))[:7]
     news.url = open("./news/" + url, "r", encoding='utf-8-sig').read()
+
+    sumary = make_summary(news.url)
     tags = Tag.objects.filter(article=news).order_by('-istop')
-    return render(request, 'news.html', {'news': news, 'tags': tags, 'catergories': categories})
-from django.views import View
-from django.shortcuts import render
+    return render(request, 'news.html', {'news': news, 'tags': tags, 'catergories': categories, 'sumary': sumary})
+
+key = 'AIzaSyDwDJDef3j5iXjXvX0aR4JjtNEc_xzvZSc'
+
+import google.generativeai as genai
+
+
+genai.configure(api_key=key)
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+def make_summary(content):
+    task = "Tóm tắt nội dung sau"
+    input_text = content
+    input_text = "\n".join([task, input_text, 'no yapping, no markdown, trả về định dạng là các thẻ tag cho mỗi câu trong đoạn trả lời, style là căn justify, dùng thẻ strong để đánh dấu những đối tượng được nêu ra'])
+    response = model.generate_content(input_text)
+    print(response.text)
+    res = response.text.replace('*', '')
+    return res
+
+
+# search function in Ariicle which have catergory is the same as search
 from .models import Article
 
-class SearchArticlesByCategoryView(View):
-    """
-    View class để tìm kiếm các bài báo theo danh mục.
-    """
-    def get(self, request):
-        # Lấy danh mục từ query parameters
-        category = request.GET.get('category', None)
-
-        # Kiểm tra xem danh mục đã được cung cấp chưa
-        if category:
-            # Tìm kiếm các bài báo có category là category được chỉ định
-            articles = Article.objects.filter(category=category)
-            
-            # Trả về trang kết quả tìm kiếm với danh sách bài báo
-            return render(request, 'home.html', {'articles': articles, 'category': category})
-        else:
-            # Trả về trang thông báo nếu không có danh mục được cung cấp
-            return render(request, 'home.html', {'error_message': 'Vui lòng cung cấp danh mục để tìm kiếm.'})
+def search(request, keyword):
+    print(keyword)
+    # search by category
+    news = Article.objects.filter(category=keyword)
+    news = news[:10]
+    categories = set()
+    for n in Article.objects.all():
+        categories.add(n.category)
+    categories = list(categories)[:7]   
+    return render(request, 'search.html', {'news': news, 'categories': categories})

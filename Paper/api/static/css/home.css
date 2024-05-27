@@ -8,6 +8,9 @@
     /* fill img */
     object-fit: fill;
 }
+.hauto {
+    height: auto;
+}
 
 .carousel-item {
     object-fit: fill;
@@ -93,6 +96,10 @@ nav {
     }
 }
 
+.add {
+    height: 500px;
+}
+
 .container .ads {
     width: 100%;
     height: 200px;
@@ -108,6 +115,7 @@ nav {
 .item-catergory {
     width: auto;
     border-width: 0 0px;
+
 }
 
 .caohonxiu {
@@ -142,8 +150,15 @@ li>i {
     text-align: justify;
     text-indent: 10px;
 
+    font-family: 'Merriweather', serif;
+    font-weight: 600;
+    height: auto;
+    padding: 0px;
+    line-height: auto;
+
     border-style: solid;
-    border-width: 0 1px 1px 0px;
+    border-color: #e5e5e5;
+    border-width: 0 0px 1px 0px;
 }
 
 .part1 {
@@ -182,18 +197,17 @@ li>i {
 
 
 .big-paper {
+    font-family: 'Merriweather', serif !important;
     min-height: 56%;
 
     img {
         height: 93%;
         width: 66%;
-        border-radius: 9px;
-        box-shadow: 0 0 10px 0px black;
         object-fit: cover;
     }
 
     div {
-        width: 33%;
+        width: 27%;
     }
 }
 
@@ -209,7 +223,6 @@ li>i {
         img {
             height: 73%;
             width: 100%;
-            border-radius: 9px;
             object-fit: cover;
         }
 
@@ -221,6 +234,14 @@ li>i {
 }
 
 
+.font {
+    font-family: 'Merriweather', serif !important;
+}
+
+.wid {
+    height: 500px;
+}
+
 .part2 {
     height: 280px;
 
@@ -228,11 +249,14 @@ li>i {
         height: 100%;
     }
 
+    p {
+        width: 90%;
+    }
+
     img {
-        width: 100%;
+        width: 90%;
         height: 100%;
         object-fit: cover;
-        border-radius: 9px;
     }
 
     .title-paper {
@@ -242,16 +266,23 @@ li>i {
         text-overflow: ellipsis;
         max-height: 80px;
         /* 2 side align */
+        font-size: 30px;
+
         text-align: justify;
-        text-indent: 10px;
+        font-family: 'Merriweather', serif;
+        font-weight: 600;
+        height: auto;
+        padding-bottom: 5px;
+        line-height: auto;
 
         border-style: solid;
-        border-width: 0 0 1px 1px;
-        height: 100%;
+        border-color: #e5e5e5;
+        border-width: 0 0px 1px 0px;
     }
 }
 
 .part3 {
+    font-family: 'Merriweather', serif !important;
     height: 400px;
 
     .col {
@@ -262,10 +293,13 @@ li>i {
         height: 50%;
 
         img {
-            width: 100%;
+            width: 90%;
             height: 100%;
             object-fit: cover;
-            border-radius: 9px;
+        }
+
+        p {
+            width: 90%;
         }
 
         .p {
@@ -292,7 +326,6 @@ li>i {
         img {
             width: 100%;
             height: 88%;
-            border-radius: 9px;
             object-fit: cover;
         }
 
@@ -326,7 +359,6 @@ li>i {
     img {
         width: 100%;
         height: 88%;
-        border-radius: 9px;
         object-fit: cover;
     }
 
@@ -349,11 +381,10 @@ li>i {
         height: 180px;
 
         img {
-            margin: 0 20px;
+            margin: 0 20px 0 0;
             width: 30%;
             height: 100%;
             object-fit: cover;
-            border-radius: 9px;
         }
 
         .detail {

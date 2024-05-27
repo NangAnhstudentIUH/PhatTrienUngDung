@@ -22,6 +22,7 @@ from api.views import UserList
 from api.views import UserViewSet
 from api.views import homepage
 from api.views import article
+from api.views import search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,4 +50,6 @@ urlpatterns = [
     path('api/homepage/', homepage, name='homepage'),
     # article with id
     path('api/article/<int:id>/', article, name='article'),
+    # search
+    path('api/search/<str:keyword>/', search, name='search'),
 ]

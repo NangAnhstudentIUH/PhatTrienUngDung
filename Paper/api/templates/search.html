@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" href=" {% static '/css/search.css' %} ">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+
+</head>
+<body>
+    <!-- nav topic -->
+    <nav>
+        <div class="container">
+            <ul class="d-flex catergory align-items-center my_navigation">
+                {% for i in categories %}
+                <li class="item-catergory mx-1 p-1" onclick="openInNewTab('/api/search/{{i}}')">{{i}}</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </nav>
+    <!-- PART-5 -->
+    <div class="container part5 mt-5">
+        <hr class="hr" />
+        {% for i in news %}
+        <div class="one d-flex" onclick="openInNewTab('/api/article/{{ i.id }}')">
+            <img src="{{ i.thumbL }}" alt="">
+            <div class="detail d-flex flex-column justify-content-around">
+                <h3>{{ i.title }}</h3>
+                <p>{{ i.description }}</p>
+                <div class="d-flex justify-content-end">
+                    <div> </div>
+                    <div>{{ i.category }}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <script>
+        function openInNewTab(url) {
+            var win = window.open(url, '_blank');
+            win.focus();
+        }
+    </script>
+</body>
+</html>

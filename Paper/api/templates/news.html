@@ -4,6 +4,7 @@
 <head>
     <title>{{ news.title }}</title>
     <!-- Required meta tags -->
+    <link rel="icon" 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -55,9 +56,30 @@
 
                 </div>
                 <h4>{{ news.description }}</h4>
+                <br>
+                <script>
+                    function show() {
+                        var x = document.getElementById("sumary");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                            return;
+                        }
+                        x.style.display = "none";
+                    }
+                </script>
+                <div class="d-flex justify-content-center">
+                    <button type="button" onclick="show()" class="btn btn-secondary">Tóm tắt bài báo trên</button>
+                </div>
+                <div id="sumary" style="display: none;">{{ sumary | safe}}</div>
+                <br>
+                <hr class="hr" />
 
                 <p>{{ news.description }}</p>
                 <div>{{ news.url | safe}}</div>
+
+
+
+
             </div>
 
             <span class="ads">Quảng cáo sẽ nằm ở đây</span>
