@@ -16,7 +16,7 @@ Trang web của chúng tôi là một ứng dụng web đọc báo trực tuyế
 - Các phần mềm cần cài đặt
     - Python (phiên bản 3.8 trở lên)
     - Django (phiên bản mới nhất)
-    - PostgreSQL (hoặc cơ sở dữ liệu tương thích khác)
+    - SQLite
 
 ## THÔNG TIN THÀNH VIÊN
 
