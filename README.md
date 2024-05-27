@@ -20,10 +20,10 @@ Trang web của chúng tôi là một ứng dụng web đọc báo trực tuyế
 
 ## THÔNG TIN THÀNH VIÊN
 
-- Nguyễn Năng Anh
-- Cao Phan Khánh Duy
-- Nguyễn Văn Hiên
-- Bùi Thị Ngọc Trân
+- Thành viên 1: Nguyễn Năng Anh
+- Thành viên 2: Cao Phan Khánh Duy
+- Thành viên 3: Nguyễn Văn Hiên
+- Thành viên 4: Bùi Thị Ngọc Trân
 
 ## TRÁCH NHIỆM
 
