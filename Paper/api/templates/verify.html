@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Verify</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/verify.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5"><i class="bi bi-file-check"></i> APPROVAL MENU | User Verification</h1>
+        <div class="d-flex justify-content-between">
+            <div class="fs-3">Verified Users | {{ verified|length }}</div>
+
+            {% if verified|length != 0 %}
+            <div class="align-bottom">
+                <a class="btn btn-outline-danger btn-sm rounded-pill auto" href="/api/user/unaproved_all_verified/">
+                    REMOVE ALL {{ verified|length }}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered table-dark align-middle">
+                <thead class="table-light">
+                    <caption>Verified Users</caption>
+                    <tr>
+                        <th class="text-center">UID</th>
+                        <th class="text-center">User Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Gender</th>
+                        <th class="text-center">Birthday</th>
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Date Register</th>
+                        <th class="text-center">Last Login</th>
+                        <th class="text-center">Remove</th>
+                        <th class="text-center">Role</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-group-divider">
+                    {% for user in verified %}
+                    <tr class="table-success">
+                        <td scope="row">{{ user.user.user_id }}</td>
+                        <td>{{ user.user.username }}</td>
+                        <td>{{ user.user.last_name }}</td>
+                        <td class="text-center"><b>{{ user.user.first_name }}</b></td>
+                        <td>{{ user.user.gender }}</td>
+                        <td>{{ user.user.birthday | date:"d/m/y" }}</td>
+                        <td>{{ user.user.address }}</td>
+                        <td>{{ user.user.date_register | date:"d/m/y" }}</td>
+                        <td>{{ user.user.last_login | date:"H:i d/m/y" }}</td>
+                        <td class="text-center">
+                            <a name="" id="" class="btn vohinh do text-center"
+                                href="/api/user/update/{{user.user.user_id}}/" role="button">
+                                <i class="bi bi-person-dash-fill"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/api/user/change_role_admin/{{user.user.user_id}}/"
+                                class="btn {% if 'admin' in user.roles %}btn-success{% else %}btn-secondary{% endif %}">Admin</a>
+                            <a href="/api/user/change_role_author/{{user.user.user_id}}/"
+                                class="btn {% if 'author' in user.roles %}btn-success{% else %}btn-secondary{% endif %}">Author</a>
+                            <a href="/api/user/change_role_user/{{user.user.user_id}}/"
+                                class="btn {% if 'user' in user.roles %}btn-success{% else %}btn-secondary{% endif %}">User</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="12">No verified users found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="fs-3">Unverified Users | {{ not_verified|length }}</div>
+            {% if not_verified|length != 0 %}
+            <div class="align-bottom">
+                <a class="btn btn-outline-success btn-sm rounded-pill auto" href="/api/user/aproved_all_not_verified/">
+                    ACEPT ALL {{ not_verified|length }}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered table-dark align-middle">
+                <thead class="table-light">
+                    <caption>Unverified Users</caption>
+                    <tr>
+                        <th class="text-center">UID</th>
+                        <th class="text-center">User Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Gender</th>
+                        <th class="text-center">Birthday</th>
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Date Register</th>
+                        <th class="text-center">Last Login</th>
+                        <th class="text-center">Accept</th>
+                        <th class="text-center">Cancel</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for user in not_verified %}
+                    <tr class="table-light">
+                        <td scope="row">{{ user.user_id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td class="text-center"><b>{{ user.first_name }}</b></td>
+                        <td>{{ user.gender }}</td>
+                        <td>{{ user.birthday | date:"d/m/y" }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.date_register | date:"d/m/y" }}</td>
+                        <td>{{ user.last_login | date:"H:i d/m/y" }}</td>
+                        <td class="text-center">
+                            <a name="" id="" class="btn vohinh xanh" href="/api/user/update/{{user.user_id}}/"
+                                role="button">
+                                <i class="bi bi-person-check-fill"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a name="" id="" class="btn vohinh do" href="/api/user/delete/{{user.user_id}}/"
+                                role="button">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="12">No unverified users found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

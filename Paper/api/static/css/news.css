@@ -1,0 +1,78 @@
+body {
+    font-family: "Oswald";
+}
+
+body {
+
+    background-color: #d7dedc !important;
+
+}
+
+
+nav {
+    width: 100%;
+    background-color: #333333;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.catergory {
+    background-color: #333333;
+    color: white;
+    list-style: none;
+    height: 39px;
+    align-items: center;
+}
+
+.baibao img {
+    border-radius: 20px;
+}
+
+.trang {
+    background-color: #ffffff;
+}
+
+.baibao {
+    width: 60%;
+    text-align: justify;
+
+    div.text {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    img {
+        width: 100%;
+    }
+
+
+}
+
+.ads {
+    position: sticky !important;
+    top: 57px;
+    margin-left: 50px;
+    height: 660px;
+    width: 400px;
+    background-color: white;
+    border: 0.5px solid;
+    text-align: center;
+}
+
+.tag {
+    .tag_name {
+        display: inline-block;
+        padding: 0 10px;
+        border-radius: 9px;
+        background-color: #d7dedc;
+        margin: 5px;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .tag_name:hover {
+        background-color: #a7b6b3;
+        color: white;
+    }
+}

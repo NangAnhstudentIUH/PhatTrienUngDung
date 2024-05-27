@@ -1,0 +1,47 @@
+body {
+    font-family: "Oswald";
+}
+
+nav {
+    position: fixed;
+    color: white;
+    width: 100%;
+    height: 30px;
+
+    text-align: center;
+    letter-spacing: 0.5px;
+    background-color: #333333;
+}
+
+.icon {
+    color: black;
+    font-size: 20px;
+}
+
+.vohinh {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font-size: 20px;
+
+
+}
+
+.do {
+    color: #f70808;
+}
+
+.do:hover {
+    color: white;
+    text-shadow: 0 0 5px #f70808;
+}
+
+.xanh {
+    color: #49af41;
+}
+
+.xanh:hover {
+    color: white;
+    text-shadow: 0 0 5px #49af41;
+}
+
